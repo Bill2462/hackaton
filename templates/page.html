@@ -2,19 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tokenization</title>
+    <title>Smart activity planner</title>
 </head>
 <body>
-<h1>What do you want to do?</h1>
+<h2>What do you want to do?</h2>
 
-<form action="/process" method="post">
-      <label for="text">Type every activity in new line</label>
+<form method="post">
+      <label for="preferences">Type your preferences</label>
       <br>
-      <textarea name="text" rows="10" cols="100"></textarea>
+      <textarea name="preferences" rows="10" cols="100">{{ request.form['preferences'] }}</textarea>
+      <br>
+      <label for="requests">Type every activity you want to do in new line</label>
+      <br>
+      <textarea name="requests" rows="10" cols="100">{{ request.form['requests'] }}</textarea>
       <br/>
       <input type="submit" value="Submit">
 </form>
 
+<h2>Recomendations</h2>
+
+{% if responses %}
+<ul>
+{% for response in responses %}
+    <li>{{ response }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+
 </body>
 </html>
-
