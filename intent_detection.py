@@ -1,4 +1,5 @@
 import pickle
+from collections import OrderedDict
 from sentence_transformers import SentenceTransformer, util
 
 class Detector:
@@ -18,7 +19,7 @@ class Detector:
         querry_embedding = self.model.encode(querry)
         similarities = util.cos_sim(querry_embedding, self.embeddings)[0]
 
-        result = dict(zip(self.intents, similarities))
+        result = OrderedDict(zip(self.intents, similarities))
         result = sorted(result.items(), key=lambda x: x[1], reverse=True)
 
         return result
