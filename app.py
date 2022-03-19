@@ -18,6 +18,9 @@ def home():
     return render_template("page.html")
 
 if __name__ == "__main__":
+    print("Loading intent model ...")
     intent_detector = Detector("intents.pkl")
-    #preference_detector = Detector("preferences.pkl")
+
+    print("Loading preferences model ...")
+    preference_detector = Detector("prefs.pkl")
     app.run()
