@@ -6,7 +6,7 @@ def go_covid_test(request_text, preferences):
     return "covid"
 
 def fun_music(request_text, preferences):
-    return "fun_music"
+    return ["fun_music", "rickroll"]
 
 def find_zaklin(request_text, preferences):
     return "zaklin"

@@ -10,9 +10,9 @@ preference_detector = None
 @app.route("/", methods=["POST", "GET"])
 def home():
     if request.method == "POST":
-        requests = request.form["requests"]
+        req = request.form["request"]
         preferences = request.form["preferences"]
-        result = process_request(intent_detector, preference_detector, requests, preferences)
+        result = process_request(intent_detector, preference_detector, req, preferences)
         return display_result(result, request)
 
     return render_template("page.html")

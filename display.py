@@ -19,6 +19,6 @@ def preference_to_human(preferences):
     return result
 
 def display_result(result, request):
-    return render_template("page.html", responses=result["responses"],
+    return render_template("page.html", recommendations = result["recommendations"],
                            preferences = preference_to_human(result["preferences"]),
                            request=request) # Ugly hack to keep form data after submit.

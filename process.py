@@ -1,11 +1,5 @@
 from actions import *
 
-def find_intents(lines, detector):
-    intents = []
-    for line in lines:
-        intents.append(detector(line))
-    return intents
-
 def process_intent(intent, request_text, preferences):
     actions = {
         "go_hospital": go_hospital_visit,
@@ -21,19 +15,18 @@ def process_intent(intent, request_text, preferences):
 
     return actions[intent](request_text, preferences)
 
-def process_request(intent_detector, preference_detector, requests, preferences):
-    requests_lines = requests.splitlines()
+def process_request(intent_detector, preference_detector, request, preferences):
     preferences_lines = preferences.splitlines()
 
-    intents = find_intents(requests_lines, intent_detector)
-    preferences = find_intents(preferences_lines, preference_detector)
+    intent = intent_detector(request)
 
-    responses = []
+    preferences = []
+    for preference_line in preferences_lines:
+        preferences.append(preference_detector(preference_line))
 
-    for request, intent in zip(requests_lines, intents):
-        responses.append(process_intent(intent, request, preferences))
+    recommendations = process_intent(intent, request, preferences)
 
-    result = {"responses": responses}
+    result = {"recommendations": recommendations}
     if len(preferences) > 0:
         result["preferences"] = preferences
     else:
