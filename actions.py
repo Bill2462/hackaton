@@ -67,10 +67,16 @@ def go_hospital_visit(request_text, preferences, location):
     return entries
 
 def fun_music(request_text, preferences, location):
-    return ["fun_music", "rickroll"]
+    return [entry = {
+            "title": "Awesome music!",
+            "description": "https://www.youtube.com/watch?v=EOxKo3Nn7Ps",
+            "footnotes": ""}]
 
 def find_zaklin(request_text, preferences, location):
-    return "zaklin"
+    return [entry = {
+            "title": "Łódzki Ogród Zoologiczny",
+            "description": ":D",
+            "footnotes": ""}]
 
 def eat(request_text, preferences, location):
     return "eat"
