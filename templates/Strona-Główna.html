@@ -17,18 +17,15 @@
   <form action="/action_page.php">
   	<div class="form-group">
       <label for="where">Where are you?</label>
-      <input type="text" class="form-control" id="where" placeholder="Enter your coordinates:" name="where" value="{{ request.form['where'] }}" required>
+      <textarea type="text" class="form-control" id="where" rows="3" placeholder="Enter your coordinates:" name="where" value="{{ request.form['where'] }}" required></textarea>
     </div>
     <div class="form-group">
       <label for="request">What do you want to do?</label>
-      <input type="text" class="form-control" id="request" placeholder="Enter your plans:" name="request" value="{{ request.form['request'] }}" required>
+      <textarea type="text" class="form-control" id="request" rows="3" placeholder="Enter your plans:" name="request" value="{{ request.form['request'] }}" required></textarea>
     </div>
     <div class="form-group">
       <label for="preferences">Do you have any preferences?</label>
-      <input type="text" class="form-control" id="preferences" placeholder="Enter your preferences:" name="preferences" value="{{ request.form['preferences'] }}" required>
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" name="remember"> Remember</label>
+      <textarea type="text" class="form-control" id="preferences" rows="3" placeholder="Enter your preferences:" name="preferences" value="{{ request.form['preferences'] }}" required></textarea>
     </div>
     <button type="submit"><img src="https://cdn.discordapp.com/attachments/953275734309351424/954788365155328031/unknown.png" /></button>
   </form>
