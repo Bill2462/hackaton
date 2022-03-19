@@ -6,23 +6,23 @@
 </head>
 <body>
 <img src="https://cdn.discordapp.com/attachments/953275734309351424/954790858765533245/unknown.png" alt="" style="width: 100%;height: auto;">
-<h2>What do you want to do?</h2>
+<h2 style="font-family:Helvetica;">What do you want to do?</h2>
 
 <form method="post">
-      <label for="preferences">Type your preferences</label>
+      <label style="font-family:Helvetica;" for="preferences">Type your preferences</label>
       <br>
-      <textarea name="preferences" rows="10" cols="100">{{ request.form['preferences'] }}</textarea>
+      <textarea style="font-family:Helvetica;" name="preferences" rows="5" cols="100">{{ request.form['preferences'] }}</textarea>
       <br>
-      <label for="requests">Type every activity you want to do in new line</label>
+      <label style="font-family:Helvetica;" for="requests">Type every activity you want to do in new line</label>
       <br>
-      <textarea name="requests" rows="10" cols="100">{{ request.form['requests'] }}</textarea>
+      <textarea style="font-family:Helvetica;" name="requests" rows="10" cols="100">{{ request.form['requests'] }}</textarea>
       <br/>
       <button type="submit"><img src="https://cdn.discordapp.com/attachments/953275734309351424/954788365155328031/unknown.png" border="0" /></button>
 </form>
 
 {% if preferences %}
 
-<h3>Recognized preferences</h3>
+<h3 style="font-family:Helvetica;">Recognized preferences</h3>
 <br>
 I'm taking the following preferences into account:
 <ul>
