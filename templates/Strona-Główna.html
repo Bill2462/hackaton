@@ -34,6 +34,35 @@
   </form>
 </div>
 
+{% if err %}
+
+<h3> {{ err }} </h3>
+
+{% endif %}
+
+{% if recommendations %}
+<h3> Recommendations </h3><br>
+
+Here are some recommendations for you based on your preferences: <br>
+
+{% for recommendation in recommendations %}
+{{ recommendation }} <br>
+{% endfor %}
+{% endif %}
+
+{% if preferences %}
+
+<h3>Recognized preferences</h3>
+<br>
+I'm taking the following preferences into account:
+<ul>
+{% for preference in preferences %}
+    <li>{{ preference }}</li>
+{% endfor %}
+</ul>
+
+{% endif %}  
+  
 <img src="https://cdn.discordapp.com/attachments/953275734309351424/954800315335585842/unknown.png" alt="" style="width: 100%;height: auto;">
 
 </body>
