@@ -33,4 +33,10 @@ def process_request(intent_detector, preference_detector, requests, preferences)
     for request, intent in zip(requests_lines, intents):
         responses.append(process_intent(intent, request, preferences))
 
-    return {"responses": responses}
+    result = {"responses": responses}
+    if len(preferences) > 0:
+        result["preferences"] = preferences
+    else:
+        result["preferences"] = None
+
+    return result
