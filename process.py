@@ -1,4 +1,7 @@
 from actions import *
+from geopy.geocoders import Nominatim
+
+geocoder = Nominatim(user_agent="weeia jam hackaton team")
 
 def process_intent(intent, request_text, preferences):
     actions = {
@@ -15,8 +18,14 @@ def process_intent(intent, request_text, preferences):
 
     return actions[intent](request_text, preferences)
 
-def process_request(intent_detector, preference_detector, request, preferences):
+def process_request(intent_detector, preference_detector, request, preferences, location):
     preferences_lines = preferences.splitlines()
+
+    location = geocoder.geocode(f"{location}, Lodz, Poland")
+    if location is None:
+        return "Error: cannot recognize your address"
+
+    print(location.latitude, location.longitude)
 
     intent = intent_detector(request)
 

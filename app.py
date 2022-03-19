@@ -11,8 +11,9 @@ preference_detector = None
 def home():
     if request.method == "POST":
         req = request.form["request"]
+        address = request.form["where"]
         preferences = request.form["preferences"]
-        result = process_request(intent_detector, preference_detector, req, preferences)
+        result = process_request(intent_detector, preference_detector, req, preferences, address)
         return display_result(result, request)
 
     return render_template("page.html")
