@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Smart activity planner</title>
+      <link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+
+      <script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
+      <script type='text/javascript' src='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js'></script>
 </head>
 <body>
 <img src="https://cdn.discordapp.com/attachments/953275734309351424/954790858765533245/unknown.png" alt="" style="width: 100%;height: auto;">
@@ -31,25 +35,40 @@
 {% endif %}
 
 {% if recommendations %}
-<h3> Recommendations </h3><br>
+<h3> Recommendations </h3>
 
 Here are some recommendations for you based on your preferences: <br>
 
 {% for recommendation in recommendations %}
-{{ recommendation }} <br>
+<h4> {{ recommendation['title'] }} </h4>
+{{ recommendation['description'] }} <br>
+<p style="font-style: italic;">{{ recommendation['footnotes'] }} </p> <br>
 {% endfor %}
 {% endif %}
 
 {% if preferences %}
 
 <h3>Recognized preferences</h3>
-<br>
 I'm taking the following preferences into account:
 <ul>
 {% for preference in preferences %}
     <li>{{ preference }}</li>
 {% endfor %}
 </ul>
+
+{% endif %}
+
+{% if map %}
+
+    <div id="map"></div>
+
+    <script>
+        var map = L.map('map').setView([{{lat}}, {{lon}}], 16);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors'}).addTo(map);
+
+        {{map|safe}}
+    </script>
 
 {% endif %}
 

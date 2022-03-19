@@ -3,10 +3,10 @@ from geopy.geocoders import Nominatim
 
 geocoder = Nominatim(user_agent="weeia jam hackaton team")
 
-def process_intent(intent, request_text, preferences):
+def process_intent(intent, request_text, preferences, location):
     actions = {
         "go_hospital": go_hospital_visit,
-        "go_covid_test": go_covid_test,
+        "go_covid_test": go_hospital_visit,
         "fun_music": fun_music,
         "find_zaklin": find_zaklin,
         "eat": eat,
@@ -16,7 +16,7 @@ def process_intent(intent, request_text, preferences):
         "get_drunk": get_drunk,
         "go_cinema": go_cinema}
 
-    return actions[intent](request_text, preferences)
+    return actions[intent](request_text, preferences, location)
 
 def process_request(intent_detector, preference_detector, request, preferences, location):
     preferences_lines = preferences.splitlines()
@@ -33,7 +33,7 @@ def process_request(intent_detector, preference_detector, request, preferences, 
     for preference_line in preferences_lines:
         preferences.append(preference_detector(preference_line))
 
-    recommendations = process_intent(intent, request, preferences)
+    recommendations = process_intent(intent, request, preferences, location)
 
     result = {"recommendations": recommendations}
     if len(preferences) > 0:
