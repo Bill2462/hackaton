@@ -1,5 +1,4 @@
 import pickle
-from collections import OrderedDict
 from sentence_transformers import SentenceTransformer, util
 
 class Detector:
@@ -17,9 +16,5 @@ class Detector:
 
     def __call__(self, querry):
         querry_embedding = self.model.encode(querry)
-        similarities = util.dot_score(querry_embedding, self.embeddings)[0]
-
-        result = OrderedDict(zip(self.intents, similarities))
-        result = sorted(result.items(), key=lambda x: x[1], reverse=True)
-
-        return result
+        similarities = list(util.dot_score(querry_embedding, self.embeddings)[0])
+        return self.intents[similarities.index(max(similarities))]
