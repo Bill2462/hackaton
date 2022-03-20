@@ -20,6 +20,7 @@ INTENTS = [
     Intent("find_zaklin", "find zaklin"),
 
     Intent("eat", "want to eat"),
+    Intent("eat_ice_cream", "I want to be happy"),
 
     Intent("shop", "want to buy"),
     Intent("shop", "want to shop"),

@@ -10,11 +10,11 @@ def process_intent(intent, request_text, preferences, location):
         "fun_music": fun_music,
         "find_zaklin": find_zaklin,
         "eat": eat,
+        "eat_ice_cream": eat_ice_cream,
         "shop": shop,
         "walk_city": walk_city,
         "walk_park": walk_park,
-        "get_drunk": get_drunk,
-        "go_cinema": go_cinema}
+        "get_drunk": get_drunk}
 
     return actions[intent](request_text, preferences, location)
 
