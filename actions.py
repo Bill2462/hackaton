@@ -62,7 +62,7 @@ def go_hospital_visit(request_text, preferences, location):
         entry = {
             "title": hospital[6],
             "description": hospital[5],
-            "footnotes": f"time to hospital {time/60} min, hospital is {fullness*100}% full"
+            "footnotes": f"time to hospital {(time/60):.2f} min, hospital is {(fullness*100):.2f}% full"
         }
         entries.append(entry)
 
@@ -126,8 +126,8 @@ def _process_food_request(preferences, location, only_icecream, student_party_mo
         rating = restaurant[5]
         entry = {
             "title": restaurant[6],
-            "description": "type: " + restaurant[7] + f", raiting: {rating}/5",
-            "footnotes": f"eta: {time / 60} min, restaurant is {fullness*100}% full"
+            "description": "type: " + restaurant[7] + f", raiting: {rating:.2f}/5",
+            "footnotes": f"eta: {(time / 60):.2f} min, restaurant is {(fullness*100):.2f}% full"
         }
         entries.append(entry)
 
@@ -173,8 +173,8 @@ def shop(request_text, preferences, location):
         rating = shop[5]
         entry = {
             "title": shop[6],
-            "description": "type: " + shop[7] + f", raiting: {rating}/5",
-            "footnotes": f"eta: {time / 60} min, shop is {fullness*100}% full"
+            "description": "type: " + shop[7] + f", raiting: {rating:.2f}/5",
+            "footnotes": f"eta: {(time / 60):.2f} min, shop is {(fullness*100):.2f}% full"
         }
         entries.append(entry)
 
@@ -252,8 +252,8 @@ def _process_walking(preferences, location, parks):
         rating = point[4]
         entry = {
             "title": point[5],
-            "description": "type: " + point[3] + f", raiting: {rating}/5, air quality: {quality_score*100}%, quiet: {quiet_score*100}%",
-            "footnotes": f"eta: {time / 60} min,"
+            "description": "type: " + point[3] + f", raiting: {rating:.2f}/5, air quality: {(quality_score*100):.2f}%, quiet: {(quiet_score*100):.2f}%",
+            "footnotes": f"eta: {(time / 60):.2f} min,"
         }
         entries.append(entry)
 

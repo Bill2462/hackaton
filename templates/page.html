@@ -3,25 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Smart activity planner</title>
-      <link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-      <script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
-      <script type='text/javascript' src='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js'></script>
+    <style>
+    div {
+        margin-left: 50px;
+    }
+    </style>
+
 </head>
 <body>
 <img src="https://cdn.discordapp.com/attachments/953275734309351424/954790858765533245/unknown.png" alt="" style="width: 100%;height: auto;">
-<h2 style="font-family:Helvetica;">What do you want to do?</h2>
 
+<br>
+<div>
 <form method="post">
-      <label for="where">Where are you?</label>
+      <label for="where"><p style="font-size:20px;">Where are you?</p></label>
       <br>
-      <input type="text" name="where" value="{{ request.form['where'] }}" required>
+      <input type="text" name="where" size="50" value="{{ request.form['where'] }}" required>
       <br>
-      <label for="request"> What do you want to do?</label>
+      <label for="request"><p style="font-size:20px;">What do you want to do?</p></label>
       <br>
-      <input type="text" name="request" value="{{ request.form['request'] }}" required>
+      <input type="text" name="request" size="50" value="{{ request.form['request'] }}" required>
       <br>
-      <label for="preferences">Your preferences:</label>
+      <label for="preferences"><p style="font-size:20px;">Your preferences</p></label>
       <br>
       <textarea name="preferences" rows="5" cols="50">{{ request.form['preferences'] }}</textarea>
       <br>
@@ -71,6 +79,7 @@ I'm taking the following preferences into account:
     </script>
 
 {% endif %}
+</div>
 
 <img src="https://cdn.discordapp.com/attachments/953275734309351424/954800315335585842/unknown.png" alt="" style="width: 100%;height: auto;">
     
